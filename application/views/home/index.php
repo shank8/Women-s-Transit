@@ -1,2 +1,4 @@
-<h1>Login page</h1>
-<?php echo $movie_title; ?>
+<h1>Login</h1>
+<form action='login.php' method="POST">
+    
+</form>

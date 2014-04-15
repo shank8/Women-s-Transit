@@ -9,10 +9,12 @@
 class Home extends CI_Controller {
     public function __construct() {
         parent::__construct();
+        
+        $this->load->helper('url');
     }
     
     public function index(){
-        $this->layout->view('/home/index', array('movie_title' => "The Lone Survivor"));
+        $this->layout->view('/home/index');
     }
 }
 
