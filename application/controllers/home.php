@@ -12,7 +12,7 @@ class Home extends CI_Controller {
     }
     
     public function index(){
-        $this->load->view('index');
+        $this->layout->view('/home/index', array('movie_title' => "The Lone Survivor"));
     }
 }
 
