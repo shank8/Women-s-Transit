@@ -1,10 +1,6 @@
 
 
-<section id="title-tab" class="section">
-    <div class="center">
-        <h1 id="main-title">WSU Women's Transit</h1>
-    </div>
-</section>
+
 
 <section id="login-tab" class="section">
     <div class="left">

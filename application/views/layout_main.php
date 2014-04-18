@@ -31,7 +31,10 @@
                 text-decoration: none;
                 color:inherit;
             }
-            
+            .page-title {
+                margin-top:35px;
+                text-align: center;
+            }
             
             /* Navigation */
             #nav-bar {
@@ -46,16 +49,23 @@
                 list-style: none;
                 position: relative;
                 margin:0 auto;
+                margin-left:50px;
             }
             .nav-item {
                 float:left;
                 line-height: 40px;
                 text-align: center;
-                padding:10px 3px;
+                padding:10px 15px;
             }
             .nav-item > a {
-             
-                color:#fff;
+                font-family: 'Racing Sans One', cursive;
+                color:#dbdbdb;
+                font-size:24px;
+                text-transform: uppercase;
+            }
+            .nav-item:hover > a {
+                color:#3FE8A4;
+               
             }
             
             /* Content */
@@ -147,6 +157,38 @@
                 margin-top: 50px;
             }
             
+            /* Status Page */
+            #table-waiting, #table-active {
+               border-collapse: collapse;
+               margin:0 auto;
+               width:100%;
+            }
+            #table-waiting td, #table-active td, th {
+                padding:8px;
+                border:2px solid #3fe8a4;
+                background: #45FFB4;
+            }
+            
+            
+            /* Footer */
+            footer {
+                background:#3FE8A4;
+                text-align: center;
+                padding:9px;
+            }
+            
+            
+            /* Buttons */
+            .wt-btn {
+                padding:10px 25px;
+                background:#3fe8a4;
+                color:#fff;
+                border:2px solid #adadad;
+                font-size:16px;
+                font-weight:bold;
+                margin:20px 0;
+            }
+            
         </style>
     </head>
 <body>
@@ -154,15 +196,24 @@
         <nav id="nav-bar">
             <ul id="nav-bar-list">
                 <li class="nav-item"><a href="<?php echo base_url('/home/index'); ?>">Home</a></li>
+                <li class="nav-item"><a href="<?php echo base_url('/home/register'); ?>">Register</a></li>
+                <li class="nav-item"><a href="<?php echo base_url('/home/status'); ?>">Status</a></li>
                 <!-- add more links as needed.. for now, we will not check for admin -->
             </ul>
         </nav>
         <section id="content">
+            <section id="title-tab" class="section">
+                <div class="center">
+                    <h1 id="main-title">WSU Women's Transit</h1>
+                </div>
+            </section>
             <?php echo $content_for_layout ?>
-        </section>
-        <footer>
             
-        </footer>
+            <footer>
+                <h3>Thank you! Copyright 2014</h3>
+            </footer>
+        </section>
+        
     </div>
       
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js" type="text/javascript"></script>
