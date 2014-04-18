@@ -5,18 +5,20 @@ PHP 5.0 MVC Web Application for Women's Transit
 
 
 
-#TODO
+# TODO
+* Build actions to handle requests for Logging in, Registering, Confirming Email, and API for the Status Page to auto-update
+* Write CRUD operation functions in our controller for basic DB entries
 
-## Matt
-* Register View
+# Current Work
+### Matt
 * User Page View
 * Admin Page View
 
-## Daniel
-* Build controllers for registering a user and for status page AJAX API
+### Daniel
 
-## Brenden
-* Write CRUD operation functions in our controller
+
+### Brenden
+
 
 
 ## Getting Started
