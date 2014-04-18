@@ -26,7 +26,7 @@
         </form>
         
         <div id="register-wrap">
-            <h1 class="register-btn font-racing">Or Register</h1>
+            <a href="<?php echo base_url('/register'); ?>"><h1 class="register-btn font-racing">Or Register</h1></a>
         </div>
     </div>
 </section>

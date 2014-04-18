@@ -24,8 +24,12 @@
             .font-racing {
                 font-family: 'Racing Sans One', cursive;
             }
+            a {
+                color:inherit;
+            }
             a:hover {
                 text-decoration: none;
+                color:inherit;
             }
             
             
@@ -149,7 +153,7 @@
     <div id="wrap">
         <nav id="nav-bar">
             <ul id="nav-bar-list">
-                <li class="nav-item"><a href="<?php echo site_url('/'); ?>">Home</a></li>
+                <li class="nav-item"><a href="<?php echo base_url('/home/index'); ?>">Home</a></li>
                 <!-- add more links as needed.. for now, we will not check for admin -->
             </ul>
         </nav>
