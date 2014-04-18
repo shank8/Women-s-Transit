@@ -33,6 +33,7 @@
             }
             .page-title {
                 margin-top:35px;
+                margin-bottom:25px;
                 text-align: center;
             }
             
