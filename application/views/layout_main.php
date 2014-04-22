@@ -40,6 +40,10 @@
             h3 {
                 text-align:center;
             }
+            .form-wrap {
+                width: 50%;
+                margin:0 auto;
+            }
             
             /* Navigation */
             #nav-bar {
