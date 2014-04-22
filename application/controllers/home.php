@@ -45,6 +45,10 @@ class Home extends CI_Controller {
         
         $this->layout->view('/home/status', $package);
     }
+    
+    public function ride(){
+        $this->layout->view('/home/ride');
+    }
 }
 
 ?>

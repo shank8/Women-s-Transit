@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="/CS483-Final/content/bootstrap/css/bootstrap-responsive.css" type="text/css" />
         <link rel="stylesheet" href="/CS483-Final/content/bootstrap/css/bootstrap.css" type="text/css" />
        <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js" type="text/javascript"></script>
         <style type="text/css">
             /* Global elements */
             html, body {
@@ -176,6 +177,7 @@
                 background:#3FE8A4;
                 text-align: center;
                 padding:9px;
+                margin-top:50px;
             }
             
             
@@ -189,7 +191,32 @@
                 font-weight:bold;
                 margin:20px 0;
             }
+            .conf {
+                font-size:28px;
+                padding:35 45px;
+                width:250px;
+            }
             
+            /* Ride Page */
+            .ride-btn {
+                padding:150px;
+                line-height:4em;
+            }
+            .ride-btn:hover {
+                background:#5C5C5C;
+                cursor:pointer;
+                color:#fff;
+            }
+            .ride-btn-text {
+                text-align:center;
+                
+                font-size:4em;
+            }
+            
+            /* Confirm Page */
+            #confirm-answer {
+                text-align: center;
+            }
         </style>
     </head>
 <body>
@@ -199,6 +226,7 @@
                 <li class="nav-item"><a href="<?php echo base_url('/home/index'); ?>">Home</a></li>
                 <li class="nav-item"><a href="<?php echo base_url('/home/register'); ?>">Register</a></li>
                 <li class="nav-item"><a href="<?php echo base_url('/home/status'); ?>">Status</a></li>
+                <li class="nav-item"><a href="<?php echo base_url('/home/ride'); ?>">Ride</a></li>
                 <!-- add more links as needed.. for now, we will not check for admin -->
             </ul>
         </nav>
@@ -217,7 +245,58 @@
         
     </div>
       
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js" type="text/javascript"></script>
+     
      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js" type="text/javascript"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-0-8K0CBYJs8Ku9hXpNk-wDCwhrm0ZcA&sensor=false"></script>
+     <script type="text/javascript">
+         var currentAddress = null;
+         
+         function confirmRide(address){
+            window.location = "/CS483-Final/ride/confirm?address=" + encodeURIComponent(address);
+            
+         }
+         
+         $('#get-current').click(function(){
+               // Get current location
+               GetGeolocation();
+               
+               
+         });
+         
+         function GetGeolocation() {
+
+            navigator.geolocation.getCurrentPosition(GetCoords);
+
+         }
+
+
+        function GetCoords(position){
+
+       
+         var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+         geocoder = new google.maps.Geocoder();
+         
+            geocoder.geocode({'latLng': latlng}, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            if (results[0]) {
+             console.log(results);
+             currentAddress = results[0].formatted_address;
+            
+             if(currentAddress !== null){
+                   confirmRide(currentAddress);
+               }
+              
+            }
+          } else {
+            alert("Geocoder failed due to: " + status);
+          }
+        });
+        
+        }
+        
+        $(document).ready(function(){
+            
+        });
+     </script>
 </body>
 </html>
