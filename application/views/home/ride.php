@@ -6,7 +6,6 @@
  * and open the template in the editor.
  */
 ?>
-
 <section id="get-current" class="section ride-btn">
     <h1 class="ride-btn-text">Get ride from current location</h1>
 </section>

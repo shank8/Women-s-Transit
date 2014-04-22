@@ -37,6 +37,9 @@
                 margin-bottom:25px;
                 text-align: center;
             }
+            h3 {
+                text-align:center;
+            }
             
             /* Navigation */
             #nav-bar {
@@ -217,6 +220,11 @@
             #confirm-answer {
                 text-align: center;
             }
+            #add-input {
+                width:100%;
+                font-size:28px;
+                text-align: center;
+            }
         </style>
     </head>
 <body>
@@ -225,8 +233,9 @@
             <ul id="nav-bar-list">
                 <li class="nav-item"><a href="<?php echo base_url('/home/index'); ?>">Home</a></li>
                 <li class="nav-item"><a href="<?php echo base_url('/home/register'); ?>">Register</a></li>
-                <li class="nav-item"><a href="<?php echo base_url('/home/status'); ?>">Status</a></li>
                 <li class="nav-item"><a href="<?php echo base_url('/home/ride'); ?>">Ride</a></li>
+                <li class="nav-item"><a href="<?php echo base_url('/home/status'); ?>">Ride Status</a></li>
+                <li class="nav-item"><a href="<?php echo base_url('/admin/status'); ?>">Queue Status</a></li>
                 <!-- add more links as needed.. for now, we will not check for admin -->
             </ul>
         </nav>
@@ -258,6 +267,8 @@
          
          $('#get-current').click(function(){
                // Get current location
+               //$('.ride-btn').not(this).hide();
+               $('#get-current > h1').text('Finding your location...please wait');
                GetGeolocation();
                
                
