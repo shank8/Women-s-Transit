@@ -26,7 +26,7 @@ PHP 5.0 MVC Web Application for Women's Transit
 * /admin/index - Complete
 * /admin/status - Half-Complete: still needs ability to edit and delete current rides
 * /admin/manage - This will be a table of all users with the ability to edit them
-* /admin/add - This will be used to add a ride manually
+* /admin/add - Completely
 
 ## Daniel
 
