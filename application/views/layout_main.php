@@ -37,7 +37,7 @@
                 margin-bottom:25px;
                 text-align: center;
             }
-            h3 {
+            h2 {
                 text-align:center;
             }
             .form-wrap {
@@ -184,7 +184,7 @@
                 background:#3FE8A4;
                 text-align: center;
                 padding:9px;
-                margin-top:50px;
+                padding-top:50px;
             }
             
             
@@ -197,6 +197,10 @@
                 font-size:16px;
                 font-weight:bold;
                 margin:20px 0;
+            }
+            .wt-btn:hover {
+                background:#fff;
+                color:#000;
             }
             .conf {
                 font-size:28px;
@@ -228,6 +232,24 @@
                 width:100%;
                 font-size:28px;
                 text-align: center;
+            }
+            
+            /* Favorites Page */
+            #fav-table {
+                margin:0 auto;
+            }
+            #fav-table td, #fav-table th {
+                padding: 20px;
+                text-align: center;
+                font-size: 18px;
+            }
+            
+            /* Other Page */
+            #other-address {
+                width:100%;
+                font-size: 28px;
+                line-height: 28px;
+                
             }
         </style>
     </head>
@@ -276,6 +298,14 @@
                GetGeolocation();
                
                
+         });
+         
+         $('#get-fav').click(function(){
+            window.location = "<?php echo base_url('/home/favorites'); ?>";
+         });
+         
+         $('#get-other').click(function(){
+             window.location = "<?php echo base_url('/home/other'); ?>";
          });
          
          function GetGeolocation() {

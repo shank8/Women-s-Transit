@@ -17,8 +17,8 @@ PHP 5.0 MVC Web Application for Women's Transit
 * /home/register - Complete
 * /home/status - Complete
 * /home/ride - Complete
-* /home/favorites -- This will display all the fav locations of the current user and allow them to select 1 to use
-* /home/other -- This will just display a form to enter an address, with the option to save it as a Favorite
+* /home/favorites -- Complete
+* /home/other -- Complete
 * /home/confirm - Complete
 * /home/profile -- This page will display all information about the user and allow editing of information
 

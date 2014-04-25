@@ -18,7 +18,7 @@
                 <input type="password" id="login-pass" class="form-control input" placeholder="Enter password" />
             </div>
 
-            <button id="login-btn" class="btn btn-primary">Login</button>
+            <button id="login-btn" class="wt-btn">Login</button>
         </form>
         
         <div id="register-wrap">
