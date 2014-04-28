@@ -54,6 +54,7 @@ class Admin extends CI_Controller {
         print_r($this->input->post());
         
         // Save the ride and redirect to /admin/status
+        
         redirect('/admin/status', 'location');
     }
 }

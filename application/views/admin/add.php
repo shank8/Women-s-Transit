@@ -26,6 +26,7 @@
         <input type="text" id="rider-from" name="from" class="form-control input" />
         
         <label for="rider-to">To</label>
+        
         <input type="text" id="rider-to" name="to" class="form-control input" />
         
         <br />

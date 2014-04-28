@@ -28,7 +28,14 @@ class Home extends CI_Controller {
     }
     
     public function ride(){
-        $this->layout->view('/home/ride');
+        // Say we have a session variable, CurrentRide, that holds all necessary data for creating a ride.
+        // When the ride action is called, do a check to see if the CurrentRide variable exists or not.
+        // If it does, then that means we have already started the process and should have the FROM address
+        // already set in the session variable.  Based on the status of the CurrentRide variable, we will serve
+        // either the /home/from view or /home/to view. After the complete CurrentRide variable is set with both addresses
+        // The variable is processed and inserted into the database
+        
+        $this->layout->view('/home/from');
     }
     
     public function favorites(){
