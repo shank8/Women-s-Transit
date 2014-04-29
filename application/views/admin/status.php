@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 ?>
 
 
@@ -21,17 +22,23 @@
         <th>Email</th>
         <th>From</th>
         <th>To</th>
+        <th></th>
+        <th></th>
     </tr>
     
+    <?php foreach($waiting as $ride){ ?>
     <tr>
-        <td>2</td>
-        <td>Sara</td>
-        <td>Johnson</td>
-        <td>(555) 555-5555</td>
-        <td>email@domain.com</td>
-        <td>898 Cougar St.</td>
-        <td>12345 Hawks Dr.</td>
+        <td><?php echo $ride['Id']; ?></td>
+        <td><?php echo $ride['FirstName']; ?></td>
+        <td><?php echo $ride['LastName']; ?></td>
+        <td><?php echo $ride['Phone']; ?></td>
+        <td><?php echo $ride['Email']; ?></td>
+        <td><?php echo $ride['AddressFrom']; ?></td>
+        <td><?php echo $ride['AddressTo']; ?></td>
+        <td><a href="<?php echo base_url('/admin/edit/'.$ride['Id']); ?>"><button class="btn btn-warning">Edit</button></a></td>
+        <td><a href="<?php echo base_url('/admin/delete/'.$ride['Id']); ?>"><button class="btn btn-danger">X</button></a></td>
     </tr>
+    <?php } ?>
 </table>
 
 <h3>Active Rides</h2>
@@ -44,17 +51,23 @@
         <th>Email</th>
         <th>From</th>
         <th>To</th>
+        <th></th>
+        <th></th>
     </tr>
     
+    <?php foreach($active as $ride){ ?>
     <tr>
-        <td>1</td>
-        <td>Jill</td>
-        <td>Smith</td>
-        <td>(555) 555-5555</td>
-        <td>email@domain.com</td>
-        <td>123 Apple St.</td>
-        <td>456 Orange Dr.</td>
+        <td><?php echo $ride['Id']; ?></td>
+        <td><?php echo $ride['FirstName']; ?></td>
+        <td><?php echo $ride['LastName']; ?></td>
+        <td><?php echo $ride['Phone']; ?></td>
+        <td><?php echo $ride['Email']; ?></td>
+        <td><?php echo $ride['AddressFrom']; ?></td>
+        <td><?php echo $ride['AddressTo']; ?></td>
+        <td><a href="<?php echo base_url('/admin/edit/'.$ride['Id']); ?>"><button class="btn btn-warning">Edit</button></a></td>
+        <td><a href="<?php echo base_url('/admin/delete/'.$ride['Id']); ?>"><button class="btn btn-danger">X</button></a></td>
     </tr>
+    <?php } ?>
 </table>
 
 <a href="<?php echo base_url('/admin/add'); ?>"><button id="new-ride-btn" class="wt-btn">Add Rider</button></a>
