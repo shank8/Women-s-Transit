@@ -23,7 +23,7 @@ class Home extends CI_Controller {
     }
     
     public function status(){
-        // Show the view for user status page
+        // Show the view for user status page and send in the current ride FROM, TO, and TIMELEFT values
         $this->layout->view('/home/status');
     }
     
@@ -36,6 +36,7 @@ class Home extends CI_Controller {
         // The variable is processed and inserted into the database
         
         $this->layout->view('/home/from');
+        
     }
     
     public function favorites(){

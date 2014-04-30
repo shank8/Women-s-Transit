@@ -11,7 +11,7 @@ class Ride extends CI_Controller {
         parent::__construct();
         
         $this->load->helper('url');
-      
+        $this->load->helper('form');
         
     }
     
@@ -27,6 +27,39 @@ class Ride extends CI_Controller {
          */
         $data = $this->input->post();
         print_r($data);
+    }
+    
+     /*
+     * PUT
+     * Updates ride information after admin edits it
+     */
+    public function update(){
+        print_r($this->input->post());
+        
+        redirect('/admin/status', 'location');
+    }
+    public function edit(){
+       // print_r($this->uri->segment(3)); // this prints the ID of what we want to edit
+        
+        // fetch the object by id
+        $ride = array(
+                'Id' => 1,
+                'FirstName' => 'Claire',
+                'LastName' => 'Smith',
+                'AddressFrom' => '456 Apple Rd.',
+                'AddressTo' => '123 Orange St.',
+                'Phone' => '555 555-5555',
+                'Email' => 'claire@test.com'
+            );
+        $this->layout->view('/ride/edit', $ride);
+    }
+    
+    public function delete(){
+         // print_r($this->uri->segment(3)); // this prints the ID of what we want to delete
+        
+        // Just delete this ride and redirect to status page
+        
+        redirect('/admin/status');
     }
     /* GET 
      * API for confirmation email

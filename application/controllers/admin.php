@@ -87,21 +87,47 @@ class Admin extends CI_Controller {
         $this->layout->view('/admin/add');
     }
     
-    public function edit(){
-       // print_r($this->uri->segment(3)); // this prints the ID of what we want to edit
+    public function manage(){
         
-        // fetch the object by id
-        $ride = array(
+        $package['users'] = array(
+            array(
+                'Id' => 0,
+                'FirstName' => 'Sara',
+                'LastName' => 'Johnson',
+                'Phone' => '555 555-5555',
+                'Email' => 'sara@test.com'
+            ),
+            array(
                 'Id' => 1,
                 'FirstName' => 'Claire',
                 'LastName' => 'Smith',
-                'AddressFrom' => '456 Apple Rd.',
-                'AddressTo' => '123 Orange St.',
+                'Phone' => '555 555-5555',
+                'Email' => 'claire@test.com'
+            )
+        );
+        $this->layout->view('/admin/manage', $package);
+    }
+    public function edit(){
+       
+        // print_r($this->uri->segment(3)); // this prints the ID of what we want to edit
+        
+        // fetch the object by id
+        $user = array(
+                'Id' => 1,
+                'FirstName' => 'Claire',
+                'LastName' => 'Smith',
                 'Phone' => '555 555-5555',
                 'Email' => 'claire@test.com'
             );
-        $this->layout->view('/admin/edit', $ride);
+        $this->layout->view('/admin/edit', $user);
     }
+    public function update(){
+        // Used to update a user
+        print_r($this->input->post());
+        
+    }
+    
+    
     /*
      * POST
      * Creates new rider
@@ -114,13 +140,5 @@ class Admin extends CI_Controller {
         redirect('/admin/status', 'location');
     }
     
-    /*
-     * PUT
-     * Updates ride information after admin edits it
-     */
-    public function editride(){
-        print_r($this->input->post());
-        
-        redirect('/admin/status', 'location');
-    }
+   
 }

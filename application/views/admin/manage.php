@@ -9,11 +9,29 @@
 ?>
 
 <div class="left">
+    <h1 class="page-title">Manage Users</h1>
     <table id="manage-table">
         <tr>
-            <!-- These are for favorites -->
-            <td><button  data-id="<?php echo $favorite['Id']; ?>" class="btn btn-warning fav-edit-btn">Edit</button></td>
-            <td><button  data-id="<?php echo $favorite['Id']; ?>" class="btn btn-danger fav-del-btn">Delete</button></td>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th></th>
+            <th></th>
         </tr>
+        
+        <?php foreach($users as $user) { ?>
+        <tr>
+            <td><?php echo $user['Id']; ?></td>
+            <td><?php echo $user['FirstName']; ?></td>
+            <td><?php echo $user['LastName']; ?></td>
+            <td><?php echo $user['Email']; ?></td>
+            <td><?php echo $user['Phone']; ?></td>
+            <td><a href="<?php echo base_url('/admin/edit/'.$user['Id']); ?>"><button class="btn btn-warning">Edit</button></a></td>
+            <td><a href="<?php echo base_url('/admin/delete/'.$user['Id']); ?>"><button class="btn btn-danger">X</button></a></td>
+        </tr>
+        
+        <?php } ?>
     </table>
 </div>

@@ -22,7 +22,7 @@
         </form>
         
         <div id="register-wrap">
-            <a href="<?php echo base_url('/register'); ?>"><h1 class="register-btn font-racing">Or Register</h1></a>
+            <a href="<?php echo base_url('/home/register'); ?>"><h1 class="register-btn font-racing">Or Register</h1></a>
         </div>
     </div>
 </section>

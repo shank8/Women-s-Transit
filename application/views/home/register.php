@@ -11,6 +11,9 @@
             <label for="reg-email">Email</label>
             <input type="email" class="form-control input" id="reg-email" name="email" placeholder="Enter Email" />
             
+            <label for="reg-phone">Phone</label>
+            <input type="text" class="form-control input" id="reg-phone" name="phone" placeholder="Enter Phone Number" />
+            
             <label for="reg-pass">Password</label>
             <input type="password" class="form-control input" name="pass" id="reg-pass" />
             

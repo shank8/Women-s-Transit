@@ -35,8 +35,8 @@
         <td><?php echo $ride['Email']; ?></td>
         <td><?php echo $ride['AddressFrom']; ?></td>
         <td><?php echo $ride['AddressTo']; ?></td>
-        <td><a href="<?php echo base_url('/admin/edit/'.$ride['Id']); ?>"><button class="btn btn-warning">Edit</button></a></td>
-        <td><a href="<?php echo base_url('/admin/delete/'.$ride['Id']); ?>"><button class="btn btn-danger">X</button></a></td>
+        <td><a href="<?php echo base_url('/ride/edit/'.$ride['Id']); ?>"><button class="btn btn-warning">Edit</button></a></td>
+        <td><a href="<?php echo base_url('/ride/delete/'.$ride['Id']); ?>"><button class="btn btn-danger">X</button></a></td>
     </tr>
     <?php } ?>
 </table>
@@ -64,8 +64,8 @@
         <td><?php echo $ride['Email']; ?></td>
         <td><?php echo $ride['AddressFrom']; ?></td>
         <td><?php echo $ride['AddressTo']; ?></td>
-        <td><a href="<?php echo base_url('/admin/edit/'.$ride['Id']); ?>"><button class="btn btn-warning">Edit</button></a></td>
-        <td><a href="<?php echo base_url('/admin/delete/'.$ride['Id']); ?>"><button class="btn btn-danger">X</button></a></td>
+        <td><a href="<?php echo base_url('/ride/edit/'.$ride['Id']); ?>"><button class="btn btn-warning">Edit</button></a></td>
+        <td><a href="<?php echo base_url('/ride/delete/'.$ride['Id']); ?>"><button class="btn btn-danger">X</button></a></td>
     </tr>
     <?php } ?>
 </table>
