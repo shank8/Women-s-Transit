@@ -20,7 +20,10 @@ class Ride extends CI_Controller {
      */
     public function create(){
         /*
-         * Data is an array ( 'session_key' : val, 'address' : val }
+         * Data is an array ( 'session_key' : val, 'address' : val, 'save-fave' : val }
+         * 
+         * Match the session_key with the backend session key and if save-fave exists
+         * then that means they want to save the address in their Favorites as well
          */
         $data = $this->input->post();
         print_r($data);
