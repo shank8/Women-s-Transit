@@ -18,9 +18,9 @@
         
         <?php foreach($favorites as $favorite){ ?>
         <tr>
-            <td><input class="fav-check form-control" type="radio" name="favorites" value="<?php echo $favorite['Id']; ?>"/></td>
-            <td><?php echo $favorite['DisplayName']; ?></td>
-            <td><?php echo $favorite['Address']; ?></td>
+            <td><input class="fav-check form-control" type="radio" name="favorites" value="<?php echo $favorite['location_id']; ?>"/></td>
+            <td><?php echo $favorite['display_name']; ?></td>
+            <td><?php echo $favorite['address']; ?></td>
         </tr>
         <?php } ?>
     </table>

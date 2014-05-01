@@ -1,4 +1,5 @@
 <?php
+require_once('/system/core/Model.php');
 class Users_model extends CI_Model {
     var $first_name, $last_name, $email, $phone, $password, $privileges;
     public function __construct() {
@@ -7,7 +8,7 @@ class Users_model extends CI_Model {
     
     public function get_user($email, $password){
         $login = array('email' => $email, 'password' => $password);
-        $query = $this->get_where('users', $login);
+        $query = $this->db->get_where('users', $login);
         return $query->result();
     }
     

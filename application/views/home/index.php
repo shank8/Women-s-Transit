@@ -5,17 +5,21 @@
 <section id="login-tab" class="section">
     <div class="left">
         
-        <h1>Login</h1>
+        <?php if($loggedin == TRUE){ ?>
+        <h1>Welcome, <?php echo $name; ?></h1>
+        <?php }else{
+            ?>
+         <h1>Login</h1>
 
-        <form id="form-login" role="form" action='login.php' method="POST">
+        <?php echo form_open('/home/login'); ?>
             <div class="form-group">
                 <label for="login-user">Email</label>
-                <input type="email" id="login-user" class="form-control input" placeholder="Enter email" />
+                <input type="email" id="login-user" class="form-control input" name="email" placeholder="Enter email" />
             </div>
 
             <div class="form-group">
                 <label for="login-pass">Password</label>
-                <input type="password" id="login-pass" class="form-control input" placeholder="Enter password" />
+                <input type="password" id="login-pass" class="form-control input" name="password" placeholder="Enter password" />
             </div>
 
             <button id="login-btn" class="wt-btn">Login</button>
@@ -24,6 +28,9 @@
         <div id="register-wrap">
             <a href="<?php echo base_url('/register'); ?>"><h1 class="register-btn font-racing">Or Register</h1></a>
         </div>
+        <?php
+        }
+       ?>
     </div>
 </section>
 

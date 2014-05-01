@@ -1,4 +1,5 @@
 <?php
+require_once('/system/core/Model.php');
 class Cars_model extends CI_Model{
     var $user_id;
     var $car_number;

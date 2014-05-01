@@ -5,17 +5,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+require_once('/application/models/locations_model.php');
+require_once('/application/models/users_model.php');
+require_once('/application/models/rides_model.php');
 
 class Home extends CI_Controller {
     public function __construct() {
         parent::__construct();
-        
+        $this->load->library('session');
         $this->load->helper('url');
         $this->load->helper('form');
+        
     }
     
     public function index(){
-        $this->layout->view('/home/index');
+        $loggedin = $this->session->userdata('loggedin');
+        $name = "";
+        if($loggedin != FALSE){
+           $user = $this->session->userdata('user');
+           $name = $user->first_name;
+        }
+        $this->layout->view('/home/index', array('loggedin' => $loggedin, 'name' => $name));
     }
     
     public function register(){
@@ -24,31 +34,68 @@ class Home extends CI_Controller {
     
     public function status(){
         // Show the view for user status page
-        $this->layout->view('/home/status');
+        if($this->session->userdata('curRideStatus') == 2){
+            $ride = $this->session->userdata('curRide');
+            
+            $vm = array(
+            'to' => $ride->address_to,
+            'from' => $ride->address_from,
+            'timeleft' => 18
+            );
+            $this->layout->view('/home/status', $vm);
+        }else{
+            redirect('/home/index');
+        }
+        
+        
     }
     
     public function ride(){
-        $this->layout->view('/home/ride');
+        if($this->session->userdata('loggedin') == TRUE){
+            $rideState = $this->session->userdata('curRideState');
+            if($rideState != 0){
+                // We have started creating a ride
+                if($rideState == 1){
+                    $this->layout->view('/home/to');
+                }else if($rideState == 2){
+                    $this->layout->view('/home/status');
+                }
+            }else{
+                 $this->layout->view('/home/from');
+            }
+           
+        }else{
+            redirect('/home/index');
+        }
+        
+    }
+    
+    public function login(){
+        $model = new Users_model();
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $user = $model->get_user($email, $password);
+        print_r($user);
+        if($user != NULL){
+            $this->session->set_userdata('user', $user);
+            $this->session->set_userdata('loggedin', TRUE);
+            $this->session->set_userdata('curRideState', 0);
+          
+            redirect('/home/index');
+        }else{
+            // Cannot find user
+            
+            redirect('/home/index');
+        }
     }
     
     public function favorites(){
         // Using session data, get the users favorite places from DB and send them to view as $favorites
-        $data = array ( 'favorites' =>
-        array(
-             array(
-                'Id' => '0',
-                'DisplayName' => 'Valhalla',
-                'Address' => '123 Colorado St. Pullman, Wa'
-            ),array(
-                'Id' => '1',
-                'DisplayName' => 'The Rec',
-                'Address' => '777 The Rec Rd. Pullman, Wa'
-            ),array(
-                'Id' => '2',
-                'DisplayName' => 'Home',
-                'Address' => '555 B St. Apartment 7 Pullman, Wa'
-            )
-        ));
+        $model = new locations_model();
+        $uid = $this->session->userdata('user_id');
+        
+        $data = $model->get_locations($uid);
+        
         $this->layout->view('/home/favorites', $data);
     }
     

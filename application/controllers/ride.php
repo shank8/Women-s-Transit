@@ -5,6 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+require_once('/application/models/locations_model.php');
+require_once('/application/models/users_model.php');
+require_once('/application/models/rides_model.php');
 
 class Ride extends CI_Controller {
     public function __construct() {
@@ -22,9 +25,62 @@ class Ride extends CI_Controller {
         /*
          * Data is an array ( 'session_key' : val, 'address' : val }
          */
-        $data = $this->input->post();
-        print_r($data);
+        if($this->session->userdata('loggedin') == TRUE){
+            $rideState = $this->session->userdata('curRideState');
+            if($rideState == 0){
+                // Create a new ride
+                $user = $this->session->userdata('user');
+                $ride = array(
+                    'user_id' => $user->user_id,
+                    'address_from' => $this->input->post('address'),
+                    'address_to' => NULL
+                );
+                $this->session->set_userdata('curRide', $ride);
+                $this->session->set_userdata('curRideState', 1);
+                redirect('/home/ride');
+            }else if($rideState == 1){
+                $user = $this->session->userdata('user');
+                
+                $curRide = $this->session->userdata('curRide');
+                $curRide->address_to = $this->input->post('address');
+                $this->session->set_userdata('curRide', $curRide);
+                $this->session->set_userdata('curRideState', 2);
+                redirect('/home/status');
+            }
+        }else{
+            redirect('/home/index');
+        }
+  
     }
+    
+     public function update(){
+        
+         $model = new Rides_model();
+         $model->update_ride();
+        
+        redirect('/admin/status', 'location');
+    }
+    public function edit(){
+       // print_r($this->uri->segment(3)); // this prints the ID of what we want to edit
+        
+        // fetch the object by id
+        $model = new Rides_model();
+        $id = $this->uri->segment(3);
+        $ride = $model->get_ride($id);
+        $this->layout->view('/ride/edit', $ride);
+    }
+    
+    public function delete(){
+         // print_r($this->uri->segment(3)); // this prints the ID of what we want to delete
+        
+        // Just delete this ride and redirect to status page
+        $model = new Rides_model();
+        $ride_id = $this->uri->segment(3);
+        $model->delete_ride($ride_id);
+        
+        redirect('/admin/status');
+    }
+    
     /* GET 
      * API for confirmation email
      */
@@ -34,13 +90,18 @@ class Ride extends CI_Controller {
         $this->layout->view('/home/confirm', $data);
     }
     
-    /* GET
-     * Status page for riders
-     */
-    public function status(){
-        // Use session data to get the users current ride data
-        // Cross reference the queues to find approx. wait time
-        // 
-        // If possible, display the first name of the driver too
+    public function makeactive(){
+         $model = new Rides_model();
+        $ride_id = $this->uri->segment(3);
+        $model->set_pickup_time($ride_id);
+        redirect('/home/status');
     }
+    
+    public function finish(){
+         $model = new Rides_model();
+        $ride_id = $this->uri->segment(3);
+        $model->set_dropoff_time($ride_id);
+        redirect('/home/status');
+    }
+
 }

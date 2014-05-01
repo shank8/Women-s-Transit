@@ -1,4 +1,5 @@
 <?php
+require_once('/system/core/Model.php');
 class Rides_model extends CI_Model{
     var $user_id;
     var $address_from;
@@ -12,14 +13,14 @@ class Rides_model extends CI_Model{
     public function get_waiting()
     {
         $this->db->where(array('pickup_time' => NULL));
-        $this->db->where(array('dropoff_time') => NULL);
+        $this->db->where(array('dropoff_time' => NULL));
         $query = $this->db->get('rides');
         return $query->result();
     }
     
     public function get_in_transit(){
         $this->db->where(array('dropoff_time' => NULL));
-        $this->db->where('dropoff_time IS NOT NULL');
+        $this->db->where('pickup_time IS NOT NULL');
         $query = $this->db->get('rides');
         return $query->result();
     }

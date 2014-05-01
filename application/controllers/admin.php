@@ -5,6 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+require_once('/application/models/locations_model.php');
+require_once('/application/models/users_model.php');
+require_once('/application/models/rides_model.php');
+
 class Admin extends CI_Controller {
     public function __construct() {
         parent::__construct();
@@ -20,21 +24,10 @@ class Admin extends CI_Controller {
     }
     
    public function status(){
+        $model = new Rides_model();
         
-        
-        //$waiting_queue = SELECT * FROM rides WHERE status = 2;
-        $query = $this->db->query('SELECT * FROM rides WHERE status = 2');
-        $waiting_queue = array();
-        foreach($query->result() as $row){
-           $waiting_queue[] = $row;
-        }
-        
-         //$active_queue = SELECT * FROM rides WHERE status = 1;
-        $query = $this->db->query('SELECT * FROM rides WHERE status = 1');
-        $active_queue = array();
-        foreach($query->result() as $row){
-            $active_queue[] = $row;
-        }
+        $waiting_queue = $model->get_waiting();
+        $active_queue = $model->get_in_transit();
         
         $package['waiting'] = $waiting_queue;
         $package['active'] = $active_queue;

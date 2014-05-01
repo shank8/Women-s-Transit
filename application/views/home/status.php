@@ -10,8 +10,9 @@
 <div class="left">
     <h1 class="page-title">Ride Status</h1>
 
-    <h2>Your driver is ???</h2>
-    <h2>Your current wait time is approximately ??? minutes</h2>
+    <h2>From: <?php echo $from; ?></h2>
+    <h2>To: <?php echo $to; ?></h2>
+    <h2>Your current wait time is approximately <?php echo $timeleft; ?> minutes</h2>
 
 
 </div>

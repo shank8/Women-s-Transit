@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+require_once('/application/models/users_model.php');
 
 class Register extends CI_Controller {
     public function __construct() {
@@ -15,7 +16,21 @@ class Register extends CI_Controller {
     }
     
     public function reg(){
-        $form_data = $this->input->post();
-        print_r($form_data);
+        $model = new Users_model();
+        $email = $this->input->post('email');
+        $password = $this->input->post('pass');
+        
+        $user = $model->get_user($email, $password);
+        if($user != null){
+            // User already exists
+            print_r("USER ALREADY EXISTS");
+            redirect('/home/index');
+        }else{
+            print_r("CREATED NEW USER");
+            $model->new_user(0); // Create new user
+            
+            redirect('/home/index');
+        }
+        
     }
 }

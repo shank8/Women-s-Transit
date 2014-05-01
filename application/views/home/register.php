@@ -11,8 +11,11 @@
             <label for="reg-email">Email</label>
             <input type="email" class="form-control input" id="reg-email" name="email" placeholder="Enter Email" />
             
+            <label for="reg-phone">Phone</label>
+            <input type="text" class="form-control input" id="reg-phone" name="phone" placeholder="Enter Phone" />
+            
             <label for="reg-pass">Password</label>
-            <input type="password" class="form-control input" name="pass" id="reg-pass" />
+            <input type="password" class="form-control input" name="password" id="reg-pass" />
             
             <label for="reg-pass-conf">Confirm Password</label>
             <input type="password" class="form-control input" name="pass-conf" id="reg-pass-conf" />
