@@ -31,7 +31,7 @@ class Ride extends CI_Controller {
                 // Create a new ride
                 $user = $this->session->userdata('user');
                 $ride = array(
-                    'user_id' => $user->user_id,
+                    'user_id' => $user['user_id'],
                     'address_from' => $this->input->post('address'),
                     'address_to' => NULL
                 );
@@ -42,7 +42,7 @@ class Ride extends CI_Controller {
                 $user = $this->session->userdata('user');
                 
                 $curRide = $this->session->userdata('curRide');
-                $curRide->address_to = $this->input->post('address');
+                $curRide['address_to'] = $this->input->post('address');
                 $this->session->set_userdata('curRide', $curRide);
                 $this->session->set_userdata('curRideState', 2);
                 redirect('/home/status');

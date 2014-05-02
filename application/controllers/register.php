@@ -18,7 +18,7 @@ class Register extends CI_Controller {
     public function reg(){
         $model = new Users_model();
         $email = $this->input->post('email');
-        $password = $this->input->post('pass');
+        $password = $this->input->post('password');
         
         $user = $model->get_user($email, $password);
         if($user != null){
@@ -27,7 +27,7 @@ class Register extends CI_Controller {
             redirect('/home/index');
         }else{
             print_r("CREATED NEW USER");
-            $model->new_user(0); // Create new user
+            $model->new_passenger(); // Create new user
             
             redirect('/home/index');
         }

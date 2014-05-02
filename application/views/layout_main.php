@@ -254,6 +254,7 @@
         </style>
     </head>
 <body>
+    
     <div id="wrap">
         <nav id="nav-bar">
             <ul id="nav-bar-list">
@@ -262,6 +263,7 @@
                 <li class="nav-item"><a href="<?php echo base_url('/home/ride'); ?>">Ride</a></li>
                 <li class="nav-item"><a href="<?php echo base_url('/home/status'); ?>">Ride Status</a></li>
                 <li class="nav-item"><a href="<?php echo base_url('/admin/status'); ?>">Queue Status</a></li>
+                <li class="nav-item"><a href="<?php echo base_url('/home/logout'); ?>">Logout</a></li>
                 <!-- add more links as needed.. for now, we will not check for admin -->
             </ul>
         </nav>

@@ -19,11 +19,12 @@ class Home extends CI_Controller {
     }
     
     public function index(){
+       
         $loggedin = $this->session->userdata('loggedin');
         $name = "";
         if($loggedin != FALSE){
            $user = $this->session->userdata('user');
-           $name = $user->first_name;
+           $name = $user['first_name'];
         }
         $this->layout->view('/home/index', array('loggedin' => $loggedin, 'name' => $name));
     }
@@ -34,14 +35,16 @@ class Home extends CI_Controller {
     
     public function status(){
         // Show the view for user status page
-        if($this->session->userdata('curRideStatus') == 2){
+        print_r($this->session->all_userdata());
+        if($this->session->userdata('curRideState') == 2){
             $ride = $this->session->userdata('curRide');
             
             $vm = array(
-            'to' => $ride->address_to,
-            'from' => $ride->address_from,
+            'to' => $ride['address_to'],
+            'from' => $ride['address_from'],
             'timeleft' => 18
             );
+            
             $this->layout->view('/home/status', $vm);
         }else{
             redirect('/home/index');
@@ -58,7 +61,7 @@ class Home extends CI_Controller {
                 if($rideState == 1){
                     $this->layout->view('/home/to');
                 }else if($rideState == 2){
-                    $this->layout->view('/home/status');
+                    redirect('/home/status');
                 }
             }else{
                  $this->layout->view('/home/from');
@@ -87,6 +90,19 @@ class Home extends CI_Controller {
             
             redirect('/home/index');
         }
+    }
+    
+    public function logout(){
+        
+        if($this->session->userdata('loggedin') == TRUE)
+        {
+            $this->session->unset_userdata('user');
+            $this->session->unset_userdata('loggedin');
+            $this->session->unset_userdata('curRide');
+            $this->session->unset_userdata('curRideState');
+            
+        }
+        redirect('/home/index');
     }
     
     public function favorites(){

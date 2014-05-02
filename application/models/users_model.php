@@ -8,8 +8,10 @@ class Users_model extends CI_Model {
     
     public function get_user($email, $password){
         $login = array('email' => $email, 'password' => $password);
-        $query = $this->db->get_where('users', $login);
-        return $query->result();
+        $query = $this->db->get_where('users', $login, 1);
+        $result = $query->result_array();
+        
+        return $result[0];
     }
     
     public function change_password($user_id, $password){
@@ -26,6 +28,7 @@ class Users_model extends CI_Model {
         $this->phone = $this->input->post('phone');
         $this->password = $this->input->post('password');
         $this->privileges = $priv;
+        $this->db->insert('users', $this);
     }
     public function new_passenger(){
         $this->new_user(0);

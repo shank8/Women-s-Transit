@@ -7,8 +7,7 @@
         
         <?php if($loggedin == TRUE){ ?>
         <h1>Welcome, <?php echo $name; ?></h1>
-        <?php }else{
-            ?>
+        <?php }else{ ?>
          <h1>Login</h1>
 
         <?php echo form_open('/home/login'); ?>
@@ -26,7 +25,7 @@
         </form>
         
         <div id="register-wrap">
-            <a href="<?php echo base_url('/register'); ?>"><h1 class="register-btn font-racing">Or Register</h1></a>
+            <a href="<?php echo base_url('/home/register'); ?>"><h1 class="register-btn font-racing">Or Register</h1></a>
         </div>
         <?php
         }

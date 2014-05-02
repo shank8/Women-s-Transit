@@ -1,5 +1,6 @@
 <?php
 require_once('/system/core/Model.php');
+
 class Locations_model extends CI_Model {
     var $user_id;
     var $display_name;
