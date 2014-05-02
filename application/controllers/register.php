@@ -23,12 +23,10 @@ class Register extends CI_Controller {
         $user = $model->get_user($email, $password);
         if($user != null){
             // User already exists
-            print_r("USER ALREADY EXISTS");
             redirect('/home/index');
         }else{
-            print_r("CREATED NEW USER");
+           
             $model->new_passenger(); // Create new user
-            
             redirect('/home/index');
         }
         

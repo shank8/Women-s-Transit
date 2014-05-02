@@ -14,7 +14,7 @@ class Ride extends CI_Controller {
         parent::__construct();
         
         $this->load->helper('url');
-      
+        $this->load->helper('form');
         
     }
     
@@ -27,11 +27,12 @@ class Ride extends CI_Controller {
          */
         if($this->session->userdata('loggedin') == TRUE){
             $rideState = $this->session->userdata('curRideState');
+            $user = $this->session->userdata('user');
             if($rideState == 0){
                 // Create a new ride
-                $user = $this->session->userdata('user');
+              
                 $ride = array(
-                    'user_id' => $user['user_id'],
+                    'user_id' => $user['id'],
                     'address_from' => $this->input->post('address'),
                     'address_to' => NULL
                 );
@@ -39,12 +40,16 @@ class Ride extends CI_Controller {
                 $this->session->set_userdata('curRideState', 1);
                 redirect('/home/ride');
             }else if($rideState == 1){
-                $user = $this->session->userdata('user');
+               
                 
                 $curRide = $this->session->userdata('curRide');
                 $curRide['address_to'] = $this->input->post('address');
                 $this->session->set_userdata('curRide', $curRide);
                 $this->session->set_userdata('curRideState', 2);
+                
+                $model = new Rides_model();
+                $model->new_ride($user['id']);
+                
                 redirect('/home/status');
             }
         }else{
@@ -67,7 +72,7 @@ class Ride extends CI_Controller {
         $model = new Rides_model();
         $id = $this->uri->segment(3);
         $ride = $model->get_ride($id);
-        $this->layout->view('/ride/edit', $ride);
+        $this->layout->view('/ride/edit', $ride[0]);
     }
     
     public function delete(){
@@ -94,14 +99,14 @@ class Ride extends CI_Controller {
          $model = new Rides_model();
         $ride_id = $this->uri->segment(3);
         $model->set_pickup_time($ride_id);
-        redirect('/home/status');
+        redirect('/admin/status');
     }
     
     public function finish(){
          $model = new Rides_model();
         $ride_id = $this->uri->segment(3);
         $model->set_dropoff_time($ride_id);
-        redirect('/home/status');
+        redirect('/admin/status');
     }
 
 }

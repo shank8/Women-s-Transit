@@ -22,6 +22,9 @@
         <th>Email</th>
         <th>From</th>
         <th>To</th>
+        <th>Pick-up Time</th>
+        <th>Drop-off Time</th>
+        <th></th>
         <th></th>
         <th></th>
     </tr>
@@ -29,11 +32,14 @@
     <?php foreach($waiting as $ride){ ?>
     <tr>
         <td><?php echo $ride['ride_id']; ?></td>
-        
+        <td><?php echo $ride['first_name']; ?></td>
+        <td><?php echo $ride['last_name']; ?></td>
         <td><?php echo $ride['phone']; ?></td>
         <td><?php echo $ride['email']; ?></td>
         <td><?php echo $ride['address_from']; ?></td>
         <td><?php echo $ride['address_to']; ?></td>
+        <td><?php echo $ride['pickup_time']; ?></td>
+        <td><?php echo $ride['dropoff_time']; ?></td>
         <td><a href="<?php echo base_url('/ride/makeactive/'.$ride['ride_id']); ?>"><button class="btn btn-primary">Activate</button></a></td>
         <td><a href="<?php echo base_url('/ride/edit/'.$ride['ride_id']); ?>"><button class="btn btn-warning">Edit</button></a></td>
         <td><a href="<?php echo base_url('/ride/delete/'.$ride['ride_id']); ?>"><button class="btn btn-danger">X</button></a></td>
@@ -51,6 +57,9 @@
         <th>Email</th>
         <th>From</th>
         <th>To</th>
+        <th>Pick-up Time</th>
+        <th>Drop-off Time</th>
+        <th></th>
         <th></th>
         <th></th>
     </tr>
@@ -64,9 +73,11 @@
         <td><?php echo $ride['email']; ?></td>
         <td><?php echo $ride['address_from']; ?></td>
         <td><?php echo $ride['address_to']; ?></td>
-        <td><a href="<?php echo base_url('/ride/finish/'.$ride['Id']); ?>"><button class="btn btn-primary">Done</button></a></td>
-        <td><a href="<?php echo base_url('/ride/edit/'.$ride['Id']); ?>"><button class="btn btn-warning">Edit</button></a></td>
-        <td><a href="<?php echo base_url('/ride/delete/'.$ride['Id']); ?>"><button class="btn btn-danger">X</button></a></td>
+        <td><?php echo $ride['pickup_time']; ?></td>
+        <td><?php echo $ride['dropoff_time']; ?></td>
+        <td><a href="<?php echo base_url('/ride/finish/'.$ride['ride_id']); ?>"><button class="btn btn-primary">Done</button></a></td>
+        <td><a href="<?php echo base_url('/ride/edit/'.$ride['ride_id']); ?>"><button class="btn btn-warning">Edit</button></a></td>
+        <td><a href="<?php echo base_url('/ride/delete/'.$ride['ride_id']); ?>"><button class="btn btn-danger">X</button></a></td>
     </tr>
     <?php } ?>
 </table>

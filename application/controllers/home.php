@@ -87,7 +87,6 @@ class Home extends CI_Controller {
             redirect('/home/index');
         }else{
             // Cannot find user
-            
             redirect('/home/index');
         }
     }

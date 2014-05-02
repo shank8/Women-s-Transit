@@ -13,10 +13,10 @@
     <div class="form-wrap">
         <?php echo form_open('/admin/update'); ?>
         <label for="rider-first">First Name</label>
-        <input type="text" id="rider-first" name="first" class="form-control input" value="<?php echo $first_name; ?>"/>
+        <input type="text" id="rider-first" name="first_name" class="form-control input" value="<?php echo $first_name; ?>"/>
         
         <label for="rider-last">Last Name</label>
-        <input type="text" id="rider-last" name="last" class="form-control input" value="<?php echo $last_name; ?>"/>
+        <input type="text" id="rider-last" name="last_name" class="form-control input" value="<?php echo $last_name; ?>"/>
         
         <label for="rider-email">Email</label>
         <input type="text" id="rider-email" name="email" class="form-control input" value="<?php echo $email; ?>"/>
